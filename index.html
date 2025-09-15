@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Healthy Balance</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        .page-content {
+            display: none;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        .nav-link {
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #6ee7b7; /* Tailwind's green-400 */
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            font-weight: 600;
+            color: #10b981;
+        }
+        
+        .box-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .box-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .gradient-shadow {
+            position: relative;
+        }
+        .gradient-shadow:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 5%;
+            width: 90%;
+            height: 15px;
+            background: linear-gradient(to right, #dcfce7, #86efac, #dcfce7);
+            filter: blur(8px);
+            z-index: -1;
+            opacity: 0.8;
+            border-radius: 9999px;
+        }
+
+        .rounded-image {
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .parallax-bg {
+            background-image: url('https://placehold.co/1200x800/e9f5e9/333333?text=Placeholder+Image');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 500px;
+        }
+
+        .gradient-overlay {
+            background: linear-gradient(to top, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1));
+            pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white bg-opacity-90 backdrop-blur-sm p-4 md:px-8 border-b border-gray-100 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+            <!-- Logo -->
+            <img src="logo.png" alt="Fresh Healthy Balance Logo" class="h-10 w-10">
+            <span class="text-xl md:text-2xl font-bold text-gray-800 tracking-wider">Fresh Healthy Balance</span>
+        </div>
+        <!-- Nav Menu -->
+        <nav>
+            <ul class="flex space-x-4 md:space-x-8 text-sm md:text-base font-medium text-gray-600">
+                <li><a href="#" data-page="home" class="nav-link active">Home</a></li>
+                <li><a href="#" data-page="healthy-habits" class="nav-link">Healthy Habits</a></li>
+                <li><a href="#" data-page="keto-diet" class="nav-link">Keto Diet</a></li>
+                <li><a href="#" data-page="ask-gpt" class="nav-link">Ask GPT</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="mt-20">
+        
+        <!-- Home Page -->
+        <section id="home" class="page-content active px-4 md:px-8 py-12 md:py-20">
+            <div class="relative w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start space-y-12 md:space-y-0 md:space-x-12">
+                <!-- Text Content -->
+                <div class="md:w-1/2 md:pr-12 text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                        More than just meals.
+                    </h1>
+                    <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto md:mx-0">
+                        Cooking for me is more than just making meals; it's an art, a chance to enjoy and experiment with flavors and textures, and an opportunity for creativity on the plate. At the same time, it empowers me to take control of my health and wellness, making every bite a step toward a better me.
+                    </p>
+                    <a href="#" data-page="healthy-habits" class="nav-link inline-block mt-4 px-8 py-3 rounded-full text-white font-bold bg-gradient-to-r from-green-300 to-green-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                        Explore Habits
+                    </a>
+                </div>
+                <!-- Image -->
+                <div class="md:w-1/2 flex justify-center md:justify-end relative">
+                    <div class="relative w-80 h-80 md:w-[400px] md:h-[400px] rounded-full overflow-hidden shadow-2xl">
+                        <img src="Gemini_Generated_Image_gfrdy6gfrdy6gfrd.png" alt="A smiling woman preparing a healthy salad in a sunlit kitchen" class="rounded-image w-full h-full transform transition-all duration-1000">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white rounded-full opacity-50"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="parallax-bg mt-20 md:mt-32 relative rounded-3xl overflow-hidden shadow-xl">
+                <div class="gradient-overlay"></div>
+            </div>
+        </section>
+
+        <!-- Healthy Habits Page -->
+        <section id="healthy-habits" class="page-content px-4 md:px-8 py-12 md:py-20">
+            <div class="max-w-6xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-6">Healthy Habits</h1>
+                <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                    Incorporating healthy habits into your daily routine doesn't have to be a drag. It’s all about making small, consistent changes that you can stick with. Think of it as a journey, not a race. By focusing on whole foods, staying hydrated, and finding joy in movement, you'll naturally feel more energized and balanced.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-8 md:gap-12 mt-12">
+                    <!-- Tip Box 1 -->
+                    <div class="box-shadow p-6 bg-white rounded-2xl text-center gradient-shadow">
+                        <h3 class="text-xl md:text-2xl font-semibold mb-2 text-green-600">
+                            Hydrate Daily
+                        </h3>
+                        <p class="text-gray-600 text-sm md:text-base">
+                            Sipping on water throughout the day keeps your energy up and metabolism humming. Start with a big glass in the morning to kickstart your system.
+                        </p>
+                    </div>
+
+                    <!-- Tip Box 2 -->
+                    <div class="box-shadow p-6 bg-white rounded-2xl text-center gradient-shadow">
+                        <h3 class="text-xl md:text-2xl font-semibold mb-2 text-green-600">
+                            Prep Your Meals
+                        </h3>
+                        <p class="text-gray-600 text-sm md:text-base">
+                            Spending a little time on Sunday to chop veggies and cook grains makes healthy eating a breeze during the week. It’s all about making it easy on yourself.
+                        </p>
+                    </div>
+
+                    <!-- Tip Box 3 -->
+                    <div class="box-shadow p-6 bg-white rounded-2xl text-center gradient-shadow">
+                        <h3 class="text-xl md:text-2xl font-semibold mb-2 text-green-600">
+                            Move Your Body
+                        </h3>
+                        <p class="text-gray-600 text-sm md:text-base">
+                            Find a form of exercise you genuinely enjoy. Whether it's a brisk walk, dancing, or cycling, the key is consistency, not intensity.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-20">
+                    <img src="Gemini_Generated_Image_2nm29t2nm29t2nm2.png" alt="A happy young child holding a large bowl of healthy salad" class="w-full md:w-3/4 max-w-2xl rounded-3xl shadow-xl transform transition-all duration-1000">
+                </div>
+            </div>
+        </section>
+
+        <!-- Keto Diet Page -->
+        <section id="keto-diet" class="page-content px-4 md:px-8 py-12 md:py-20">
+            <div class="max-w-6xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-center text-gray-900 mb-6">Keto Diet</h1>
+                <p class="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                    The ketogenic diet is a low-carb, high-fat, and moderate-protein eating plan. By drastically reducing carbohydrate intake and replacing it with fat, your body enters a metabolic state called ketosis. In this state, your body efficiently burns fat for energy instead of glucose, which can lead to weight loss, improved blood sugar control, and increased mental clarity.
+                </p>
+
+                <div class="bg-gray-50 rounded-2xl p-6 md:p-12 box-shadow gradient-shadow">
+                    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">Meal Plan</h2>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 md:gap-12">
+                        <!-- Breakfast Box -->
+                        <div class="p-6 bg-white rounded-2xl box-shadow">
+                            <h3 class="text-2xl font-semibold text-green-600 mb-4">Breakfast</h3>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Scrambled eggs with spinach and avocado</li>
+                                <li>Keto smoothie with almond milk, spinach, and a scoop of protein powder</li>
+                                <li>Avocado toast on keto bread with everything bagel seasoning</li>
+                                <li>Cottage cheese with berries and walnuts</li>
+                                <li>Omelet with mushrooms, bell peppers, and cheddar cheese</li>
+                                <li>Greek yogurt with a few raspberries and chia seeds</li>
+                                <li>Bacon and egg muffins</li>
+                            </ul>
+                            <a href="https://www.healthline.com/nutrition/keto-breakfasts" class="block text-green-500 hover:text-green-600 mt-4 text-sm font-medium">Resource Link</a>
+                        </div>
+                        
+                        <!-- Lunch Box -->
+                        <div class="p-6 bg-white rounded-2xl box-shadow">
+                            <h3 class="text-2xl font-semibold text-green-600 mb-4">Lunch</h3>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Grilled chicken salad with mixed greens and a vinaigrette dressing</li>
+                                <li>Salmon with roasted asparagus and lemon butter sauce</li>
+                                <li>Leftover steak with a side of sautéed broccoli</li>
+                                <li>Tuna salad with celery and mayonnaise, served in lettuce wraps</li>
+                                <li>Keto-friendly beef and broccoli stir-fry</li>
+                                <li>Shrimp skewers with zucchini and bell peppers</li>
+                                <li>Cauliflower rice bowl with seasoned ground beef and sour cream</li>
+                            </ul>
+                            <a href="https://www.dietdoctor.com/low-carb/lunch" class="block text-green-500 hover:text-green-600 mt-4 text-sm font-medium">Resource Link</a>
+                        </div>
+                        
+                        <!-- Dinner Box -->
+                        <div class="p-6 bg-white rounded-2xl box-shadow">
+                            <h3 class="text-2xl font-semibold text-green-600 mb-4">Dinner</h3>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>Zucchini noodles with a creamy alfredo sauce and chicken</li>
+                                <li>Keto chili with ground beef and no beans</li>
+                                <li>Grilled steak with a side of creamed spinach</li>
+                                <li>Baked cod with a crust of parmesan and herbs</li>
+                                <li>Spaghetti squash boats with marinara sauce and mozzarella</li>
+                                <li>Pork chops with sautéed green beans</li>
+                                <li>Stuffed bell peppers with ground turkey and cheese</li>
+                            </ul>
+                            <a href="https://www.ketodietapp.com/blog/keto-dinner-recipes" class="block text-green-500 hover:text-green-600 mt-4 text-sm font-medium">Resource Link</a>
+                        </div>
+                        
+                        <!-- Snack Box -->
+                        <div class="p-6 bg-white rounded-2xl box-shadow">
+                            <h3 class="text-2xl font-semibold text-green-600 mb-4">Snack</h3>
+                            <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                                <li>A handful of almonds or walnuts</li>
+                                <li>Celery sticks with cream cheese</li>
+                                <li>Hard-boiled eggs</li>
+                                <li>Cheese sticks or cheese slices</li>
+                                <li>Olives</li>
+                                <li>A few squares of dark chocolate (90% or higher)</li>
+                                <li>Pork rinds</li>
+                            </ul>
+                            <a href="https://www.eatthis.com/keto-snacks/" class="block text-green-500 hover:text-green-600 mt-4 text-sm font-medium">Resource Link</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-20">
+                    <img src="Gemini_Generated_Image_j2gaelj2gaelj2ga.png" alt="An artistically plated dish with octopus and scallops" class="w-full md:w-3/4 max-w-2xl rounded-3xl shadow-xl transform transition-all duration-1000">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Ask GPT Page -->
+        <section id="ask-gpt" class="page-content px-4 md:px-8 py-12 md:py-20">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center text-center md:text-left space-y-8 md:space-y-0 md:space-x-12">
+                <div class="w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
+                    <a href="https://chatgpt.com/g/g-68c687cb3d1c8191b0462a37a7aa6a40-fresh-healthy-balance" target="_blank" class="block transform transition-transform hover:scale-105">
+                        <img src="logo.png" alt="Fresh Healthy Balance GPT Logo" class="rounded-full shadow-lg">
+                    </a>
+                </div>
+                <div>
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Fresh Healthy Balance GPT</h1>
+                    <p class="text-lg text-gray-600 max-w-xl mx-auto md:mx-0">
+                        The heart of our mission is to provide you with a guide for healthy and wellness-focused cooking. This custom GPT is your personal assistant in the kitchen, ready to offer advice, recipes, and inspiration whenever you need it to help you on your journey.
+                    </p>
+                    <a href="https://chatgpt.com/g/g-68c687cb3d1c8191b0462a37a7aa6a40-fresh-healthy-balance" target="_blank" class="inline-block mt-8 px-8 py-3 rounded-full text-white font-bold bg-gradient-to-r from-green-300 to-green-500 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                        Meet Your Guide
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <script>
+        // JavaScript for handling navigation and active state
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageContents = document.querySelectorAll('.page-content');
+
+            const navigateToPage = (targetId) => {
+                pageContents.forEach(page => {
+                    page.classList.remove('active');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                document.getElementById(targetId).classList.add('active');
+                document.querySelector(`[data-page="${targetId}"]`).classList.add('active');
+            };
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetPage = e.target.getAttribute('data-page');
+                    if (targetPage) {
+                        navigateToPage(targetPage);
+                    }
+                });
+            });
+
+            // Handle initial page load
+            const initialPage = window.location.hash.substring(1) || 'home';
+            if (document.getElementById(initialPage)) {
+                navigateToPage(initialPage);
+            }
+        });
+    </script>
+
+</body>
+</html>
